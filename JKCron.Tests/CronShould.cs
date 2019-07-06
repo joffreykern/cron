@@ -1,3 +1,4 @@
+﻿
 using NUnit.Framework;
 using TestStack.BDDfy;
 
@@ -14,27 +15,16 @@ namespace JKCron.Tests
         }
 
         [Test]
-        [TestCase("9", "12", "15", "5", "1", "/usr/bind/find")]
-        [TestCase("1", "2", "3", "4", "5", "/usr/bind/dotnet")]
-        [TestCase("60", "24", "31", "12", "7", "/usr/bind/helloworld")]
-        [TestCase("0", "0", "0", "0", "0", "/usr/bind/hello")]
-        public void ReturnTheCorrectValuesForTheGivenParameters(
-            string minute,
-            string hour,
-            string dayOfMonth,
-            string month,
-            string dayOfWeek,
-            string command)
+        public void ExpectedValueForGivenInput()
         {
-            this.Given(_ => _cronEndpoint.ParametersAre(new string[] { minute, hour, dayOfMonth, month, dayOfWeek, command }))
+            this.Given(_ => _cronEndpoint.ParametersAre(new[] { "*/15", "0", "1,15", "*", "1-5", "/usr/bin/find" }))
                 .When(_ => _cronEndpoint.ExecuteCron())
-                .Then(_ => _cronEndpoint.OutputShouldReturn(
-                                              $"minute        {minute}\r\n" +
-                                              $"hour          {hour}\r\n" +
-                                              $"day of month  {dayOfMonth}\r\n" +
-                                              $"month         {month}\r\n" +
-                                              $"day of week   {dayOfWeek}\r\n" +
-                                              $"command       {command}\r\n"))
+                .Then(_ => _cronEndpoint.MinuteOutputIs("0 15 30 45"))
+                .And(_ => _cronEndpoint.HourOutputIs("0"))
+                .And(_ => _cronEndpoint.DayOfMonthOutputIs("1 15"))
+                .And(_ => _cronEndpoint.MonthOutputIs("1 2 3 4 5 6 7 8 9 10 11 12"))
+                .And(_ => _cronEndpoint.DayOfWeekOutputIs("1 2 3 4 5"))
+                .And(_ => _cronEndpoint.CommandOutputIs("/usr/bin/find"))
                 .BDDfy();
         }
     }

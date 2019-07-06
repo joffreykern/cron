@@ -4,7 +4,7 @@
     {
         public static string Parse(string input)
         {
-            return Parameter.Parse(input, 0, 60);
+            return Parameter.Parse(input, 0, 59);
         }
     }
 }
