@@ -32,3 +32,17 @@ command			/usr/bind/find
 You should not spend more than three hours on this exercise. If you do not have time to handle all possible cron strings, then an app which handles a subset of them correctly is better than one which does not run or produces incorrect results.
 
 You should see your project reviewer as a new team member you are handing over this project to. Provide everything you feel would be relevant for them to ramp up quickly, such as tests, a README and instructions for how to run your project.
+
+
+
+Documentation :
+
+ * * * * *  command to execute
+ ┬ ┬ ┬ ┬ ┬
+ │ │ │ │ │
+ │ │ │ │ │
+ │ │ │ │ └───── day of week (0 - 7) (0 to 6 are Sunday to Saturday, or use names; 7 is Sunday, the same as 0)
+ │ │ │ └────────── month (1 - 12)
+ │ │ └─────────────── day of month (1 - 31)
+ │ └──────────────────── hour (0 - 23)
+ └───────────────────────── min (0 - 59)
