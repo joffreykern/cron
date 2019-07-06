@@ -28,12 +28,13 @@ namespace JKCron.Tests
         {
             this.Given(_ => _cronEndpoint.ParametersAre(new string[] { minute, hour, dayOfMonth, month, dayOfWeek, command }))
                 .When(_ => _cronEndpoint.ExecuteCron())
-                .Then(_ => _cronEndpoint.OutputShouldReturn($"minute \t\t{minute}\r\n" +
-                                              $"hour \t\t{hour}\r\n" +
-                                              $"day of month \t{dayOfMonth}\r\n" +
-                                              $"month \t\t{month}\r\n" +
-                                              $"day of week \t{dayOfWeek}\r\n" +
-                                              $"command \t{command}\r\n"))
+                .Then(_ => _cronEndpoint.OutputShouldReturn(
+                                              $"minute        {minute}\r\n" +
+                                              $"hour          {hour}\r\n" +
+                                              $"day of month  {dayOfMonth}\r\n" +
+                                              $"month         {month}\r\n" +
+                                              $"day of week   {dayOfWeek}\r\n" +
+                                              $"command       {command}\r\n"))
                 .BDDfy();
         }
     }

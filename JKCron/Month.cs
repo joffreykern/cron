@@ -4,14 +4,19 @@ namespace JKCron
 {
     public class Month
     {
-        public static string Parse(string month)
+        public static string Parse(string input)
         {
-            if (month == "*")
+            if (input.ContainsComma())
+            {
+                return input.SplitByComma();
+            }
+
+            if (input == "*")
             {
                 return string.Join(' ', Enumerable.Range(1, 12));
             }
 
-            return month;
+            return input;
         }
     }
 }

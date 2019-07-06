@@ -6,6 +6,11 @@ namespace JKCron
     {
         public static string Parse(string input)
         {
+            if (input.ContainsComma())
+            {
+                return input.SplitByComma();
+            }
+
             if (input == "*")
             {
                 return string.Join(' ', Enumerable.Range(0, 24));
