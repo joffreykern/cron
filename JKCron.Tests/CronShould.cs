@@ -21,9 +21,14 @@ namespace JKCron.Tests
         [Test]
         public void ReturnTheCorrectValuesForTheGivenParameters()
         {
-            this.Given(_ => ParametersAre(new string[] { "15" }))
+            this.Given(_ => ParametersAre(new string[] { "09", "12", "15", "05", "1", "/usr/bind/find" }))
                 .When(_ => ExecuteCron())
-                .Then(_ => OutputShouldReturn("minute \t\t15\r\n"))
+                .Then(_ => OutputShouldReturn("minute \t\t09\r\n" +
+                                              "hour \t\t12\r\n" +
+                                              "day of month \t15\r\n" +
+                                              "month \t\t05\r\n" +
+                                              "day of week \t1\r\n" +
+                                              "command \t/usr/bind/find\r\n"))
                 .BDDfy();
         }
 
