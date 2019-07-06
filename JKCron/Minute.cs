@@ -1,27 +1,10 @@
-﻿using System.Linq;
-
-namespace JKCron
+﻿namespace JKCron
 {
     public class Minute
     {
         public static string Parse(string input)
         {
-            if (input.ContainsDash())
-            {
-                return input.SplitByDash();
-            }
-
-            if (input.ContainsComma())
-            {
-                return input.SplitByComma();
-            }
-
-            if (input == "*")
-            {
-                return string.Join(' ', Enumerable.Range(0, 60));
-            }
-
-            return input;
+            return Parameter.Parse(input, 0, 60);
         }
     }
 }
