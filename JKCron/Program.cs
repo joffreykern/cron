@@ -6,7 +6,7 @@ namespace JKCron
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine($"minute \t\t{args[0]}");
         }
     }
 }
