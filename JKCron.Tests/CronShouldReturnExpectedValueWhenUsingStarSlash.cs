@@ -14,7 +14,7 @@ namespace JKCron.Tests
         }
 
         [Test]
-        public void ForMinute()
+        public void ForEveryParameters()
         {
             this.Given(_ => _cronEndpoint.ParametersAre(new string[] { "*/15", "*/2", "*/5", "*/3", "*/1", "/usr/bind/find" }))
                 .When(_ => _cronEndpoint.ExecuteCron())
