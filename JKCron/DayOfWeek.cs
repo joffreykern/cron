@@ -6,6 +6,11 @@ namespace JKCron
     {
         public static string Parse(string input)
         {
+            if (input.ContainsDash())
+            {
+                return input.SplitByDash();
+            }
+
             if (input.ContainsComma())
             {
                 return input.SplitByComma();
