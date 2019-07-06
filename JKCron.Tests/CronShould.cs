@@ -1,21 +1,16 @@
-using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.IO;
 using TestStack.BDDfy;
 
 namespace JKCron.Tests
 {
     public class CronShould
     {
-        private string[] _parameters;
-        private StringWriter _textWriter;
+        private CronEndpoint _cronEndpoint;
 
         [SetUp]
         public void Setup()
         {
-            _textWriter = new StringWriter();
-            Console.SetOut(_textWriter);
+            _cronEndpoint = new CronEndpoint();
         }
 
         [Test]
@@ -31,30 +26,15 @@ namespace JKCron.Tests
             string dayOfWeek,
             string command)
         {
-            this.Given(_ => ParametersAre(new string[] { minute, hour, dayOfMonth, month, dayOfWeek, command }))
-                .When(_ => ExecuteCron())
-                .Then(_ => OutputShouldReturn($"minute \t\t{minute}\r\n" +
+            this.Given(_ => _cronEndpoint.ParametersAre(new string[] { minute, hour, dayOfMonth, month, dayOfWeek, command }))
+                .When(_ => _cronEndpoint.ExecuteCron())
+                .Then(_ => _cronEndpoint.OutputShouldReturn($"minute \t\t{minute}\r\n" +
                                               $"hour \t\t{hour}\r\n" +
                                               $"day of month \t{dayOfMonth}\r\n" +
                                               $"month \t\t{month}\r\n" +
                                               $"day of week \t{dayOfWeek}\r\n" +
                                               $"command \t{command}\r\n"))
                 .BDDfy();
-        }
-
-        private void OutputShouldReturn(string output)
-        {
-            _textWriter.GetStringBuilder().ToString().Should().Be(output);
-        }
-
-        private void ExecuteCron()
-        {
-            JKCron.Program.Main(_parameters);
-        }
-
-        private void ParametersAre(string[] parameters)
-        {
-            _parameters = parameters;
         }
     }
 }
