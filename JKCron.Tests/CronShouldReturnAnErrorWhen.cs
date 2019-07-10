@@ -5,7 +5,7 @@ namespace JKCron.Tests
 {
     public class CronShouldReturnAnErrorWhen
     {
-        private const string ExpectedErrorMessage = "Invalid number of parameters, we are expecting 6 parameters\r\n";
+        private string ExpectedErrorMessage = "Invalid number of parameters, we are expecting 6 parameters" + EndOfLineHelper.GetEndLine();
         private CronEndpoint _cronEndpoint;
 
         [SetUp]

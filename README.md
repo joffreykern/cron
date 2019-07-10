@@ -6,7 +6,7 @@ JKCron is a command line application which parses a cron string and expands each
 
 Example :
 
-```JKCron.exe */15 0 1,15 * 1-5 /usr/bin/find```
+```dotnet JKCron.dll "*/15" "0" "1,15" "*" "1-5" "/usr/bin/find"```
 
 Will output :
 
@@ -27,7 +27,7 @@ Then you are able to build, test and run the project :
 
 * `dotnet build` to build the project.
 * `dotnet test` to run all the tests of the project
-* `dotnet .\JKCron\bin\Debug\netcoreapp2.1\JKCron.dll <minute> <hour> <day of month> <month> <day of week> <command>` to run the project
+* `dotnet .\JKCron\bin\Debug\netcoreapp2.1\JKCron.dll "<minute>" "<hour>" "<day of month>" "<month>" "<day of week>" "<command>"` to run the project
 
 ## The structure of the project
 

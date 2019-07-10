@@ -33,37 +33,37 @@ namespace JKCron.Tests
 
         public void MinuteOutputIs(string expectedOutput)
         {
-            _textWriter.GetStringBuilder().ToString().Split("\r\n").ElementAt(0).Should()
+            _textWriter.GetStringBuilder().ToString().Split(EndOfLineHelper.GetEndLine()).ElementAt(0).Should()
                 .Be($"minute        {expectedOutput}");
         }
 
         public void HourOutputIs(string expectedOutput)
         {
-            _textWriter.GetStringBuilder().ToString().Split("\r\n").ElementAt(1).Should()
+            _textWriter.GetStringBuilder().ToString().Split(EndOfLineHelper.GetEndLine()).ElementAt(1).Should()
                 .Be($"hour          {expectedOutput}");
         }
 
         public void DayOfMonthOutputIs(string expectedOutput)
         {
-            _textWriter.GetStringBuilder().ToString().Split("\r\n").ElementAt(2).Should()
+            _textWriter.GetStringBuilder().ToString().Split(EndOfLineHelper.GetEndLine()).ElementAt(2).Should()
                 .Be($"day of month  {expectedOutput}");
         }
 
         public void MonthOutputIs(string expectedOutput)
         {
-            _textWriter.GetStringBuilder().ToString().Split("\r\n").ElementAt(3).Should()
+            _textWriter.GetStringBuilder().ToString().Split(EndOfLineHelper.GetEndLine()).ElementAt(3).Should()
                 .Be($"month         {expectedOutput}");
         }
 
         public void DayOfWeekOutputIs(string expectedOutput)
         {
-            _textWriter.GetStringBuilder().ToString().Split("\r\n").ElementAt(4).Should()
+            _textWriter.GetStringBuilder().ToString().Split(EndOfLineHelper.GetEndLine()).ElementAt(4).Should()
                 .Be($"day of week   {expectedOutput}");
         }
 
         public void CommandOutputIs(string expectedOutput)
         {
-            _textWriter.GetStringBuilder().ToString().Split("\r\n").ElementAt(5).Should()
+            _textWriter.GetStringBuilder().ToString().Split(EndOfLineHelper.GetEndLine()).ElementAt(5).Should()
                 .Be($"command       {expectedOutput}");
         }
     }
